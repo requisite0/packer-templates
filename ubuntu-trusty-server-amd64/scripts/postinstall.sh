@@ -6,7 +6,7 @@ date > /etc/vagrant_box_build_time
 # Apt-install various things necessary for Ruby, guest additions,
 # etc., and remove optional things to trim down the machine.
 apt-get -y update
-apt-get -y dist-upgrade
+apt-get -y upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get clean
 
@@ -65,4 +65,7 @@ rm /lib/udev/rules.d/75-persistent-net-generator.rules
 
 echo "Adding a 2 sec delay to the interface up, to make the dhclient happy"
 echo "pre-up sleep 2" >> /etc/network/interfaces
+
+# Dist-upgrade
+apt-get -y dist-upgrade
 exit
