@@ -6,7 +6,7 @@ date > /etc/vagrant_box_build_time
 # Apt-install various things necessary for Ruby, guest additions,
 # etc., and remove optional things to trim down the machine.
 apt-get -y update
-apt-get -y upgrade
+apt-get -y dist-upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get clean
 
@@ -45,6 +45,7 @@ chown -R vagrant /home/vagrant/.ssh
 # Remove items used for building, since they aren't needed anymore
 apt-get -y remove linux-headers-$(uname -r) build-essential
 apt-get -y autoremove
+apt-get clean
 
 # Zero out the free space to save space in the final image:
 dd if=/dev/zero of=/EMPTY bs=1M
